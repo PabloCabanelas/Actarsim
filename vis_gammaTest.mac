@@ -226,4 +226,4 @@
 #
 # RUN: number of events
 #
-/run/beamOn 100000
+#/run/beamOn 100000
