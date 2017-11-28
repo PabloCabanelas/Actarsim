@@ -55,7 +55,7 @@
 #/ActarSim/det/gas/setGasTemperature 293.15       #Select the Gas Temperature for the Gas box
 #/ActarSim/det/gas/setGasMat iC4H10               #Select Material of the Gas for the Gas box
 
-/ActarSim/det/gas/setGasPressure 0.1 bar         #Select the Gas Pressure for the Gas box
+/ActarSim/det/gas/setGasPressure 0.4 bar         #Select the Gas Pressure for the Gas box
 /ActarSim/det/gas/setGasTemperature 293.15       #Select the Gas Temperature for the Gas box
 /ActarSim/det/gas/mixture/GasMixture 2
 /ActarSim/det/gas/mixture/setGasMix 1 Ar 0.90
@@ -93,20 +93,20 @@
 #Control of the output on the ROOT file
 #all the tracks are stored (note: huge space comsumption)
 #Note: it should come before the update!!!
-/ActarSim/analControl/storeTracks off            #Stores the tracks in the output Tree
+/ActarSim/analControl/storeTracks on            #Stores the tracks in the output Tree
 /ActarSim/analControl/storeTrackHistos off       #Stores the tracks in Histograms
 /ActarSim/analControl/storeEvents on             #Stores the events in the output Tree
 /ActarSim/analControl/storeHistograms off        #Stores histograms in the output Tree
-/ActarSim/analControl/storeSimpleTracks off      #Stores the simple tracks in the output Tree
+/ActarSim/analControl/storeSimpleTracks on      #Stores the simple tracks in the output Tree
 #/ActarSim/analControl/setMinStrideLength 0.1     #Specifies the minimum length of the strides in the simpleTracks
 #/ActarSim/phys/stepMax 1000000.                  #Set max allowed step length for the default region
 #
 # CONTROL OF THE PRIMARY EVENTS
 #For all cases the possibility to have realistic beam distribution
-/ActarSim/gun/beamInteraction off                #Simulates the beam energy loss in gas
-/ActarSim/gun/realisticBeam off                  #Simulates beam emittance according to emittance parameters
-#/ActarSim/gun/emittance 200.0                   #Selects the value of the emittance [in mm mrad]
-#/ActarSim/gun/beamRadiusAtEntrance 18. mm        #Selects the beam radius at entrance of ACTAR. Used with the emittance to calculate the position and angle distributions of the beam when a realisticBeam option is set
+/ActarSim/gun/beamInteraction on                #Simulates the beam energy loss in gas
+/ActarSim/gun/realisticBeam on                  #Simulates beam emittance according to emittance parameters
+/ActarSim/gun/emittance 1.0                   #Selects the value of the emittance [in mm mrad]
+/ActarSim/gun/beamRadiusAtEntrance 0.1 mm        #Selects the beam radius at entrance of ACTAR. Used with the emittance to calculate the position and angle distributions of the beam when a realisticBeam option is set
 /ActarSim/gun/beamDirection 0 0 1                #Set beam momentum direction
 /ActarSim/gun/beamPosition 0 0 -133 mm           #Set beam starting position
 /ActarSim/gun/randomTheta off                    #Select a random Theta angle for the scattered particle
@@ -128,8 +128,9 @@
 #/ActarSim/gun/ion 6 13 6 0.0 13.00335483778
 #/ActarSim/gun/ion 12 24 12 0.0 23.985041699
 #/ActarSim/gun/ion 26 56 26 0.0 55.934937475
-#/ActarSim/gun/energy 6. MeV                   #Sets the kinetic energy of the primary particle
-#/ActarSim/gun/position 0 0 0                   #Set starting position of the particle
+#/ActarSim/gun/ion 25 46 25 0.0 45.98672 #Set properties of incident ion to be generated
+#/ActarSim/gun/energy 331 MeV                   #Sets the kinetic energy of the primary particle
+#/ActarSim/gun/position 0 0 -600                   #Set starting position of the particle
 #/ActarSim/gun/direction 0 0 1                  #Set momentum direction. Direction does not need to be a unit vector
 #Set starting position of the particle
 #/ActarSim/gun/polarization 0 0 0                #Set polarization
@@ -151,12 +152,12 @@
 #
 /ActarSim/gun/Kine/incidentIon 25 46 25 0.0 45.98672 #Set properties of incident ion to be generated
 
-/ActarSim/gun/Kine/targetIon 1 1 1 0.0 1.00782503207   #Set properties of target ion to be generated
+#/ActarSim/gun/Kine/targetIon 1 1 1 0.0 1.00782503207   #Set properties of target ion to be generated
 #/ActarSim/gun/Kine/targetIon 1 2 1 0.0 2.0141
 
 #/ActarSim/gun/Kine/scatteredIon 1 2 1 0.0 2.0141
 #/ActarSim/gun/Kine/scatteredIon 50 133 50 0.854 132.9238
-/ActarSim/gun/Kine/scatteredIon 2 4 2 0.0 4.001506179125   #Set properties of scattered ion to be generated
+#/ActarSim/gun/Kine/scatteredIon 2 4 2 0.0 4.001506179125   #Set properties of scattered ion to be generated
 
 #/ActarSim/gun/Kine/recoilIon 1 1 1 0.0 1.00782503207
 #/ActarSim/gun/Kine/recoilIon 1 2 1 0.0 2.0141
@@ -165,20 +166,23 @@
 #/ActarSim/gun/time 0
 #/ActarSim/gun/polarization 0
 #/ActarSim/gun/number 1
-/ActarSim/gun/randomVertexZPosition on
+/ActarSim/gun/randomVertexZPosition off
 #/ActarSim/gun/randomVertexZRange 10 128 mm
-/ActarSim/gun/randomVertexZRange -133 133 mm
+#/ActarSim/gun/randomVertexZRange -133 133 mm
+/ActarSim/gun/randomVertexZRange -83 50 mm
 #/ActarSim/gun/vertexZPosition 0 mm
+/ActarSim/gun/implantBeam on
+/ActarSim/gun/energyDispersion 0 25 0
 
 
 /ActarSim/gun/gammaGenTest on                                #Select a gamma test!!!
 
 
 #/ActarSim/gun/energy 80 MeV
-/ActarSim/gun/Kine/labEnergy 1080.81 MeV
-/ActarSim/gun/Kine/randomThetaCM on
+/ActarSim/gun/Kine/labEnergy 200 MeV
+/ActarSim/gun/Kine/randomThetaCM off
 /ActarSim/gun/Kine/randomThetaRange 0.0 180.0
-/ActarSim/gun/Kine/randomPhiAngle on
+/ActarSim/gun/Kine/randomPhiAngle off
 #/ActarSim/gun/Kine/userThetaCM 12.0 deg
 #/ActarSim/gun/Kine/userPhiAngle 0. deg
 #/ActarSim/gun/Kine/vertexPosition 0. 0. 15 cm
@@ -226,4 +230,4 @@
 #
 # RUN: number of events
 #
-/run/beamOn 100000
+/run/beamOn 10

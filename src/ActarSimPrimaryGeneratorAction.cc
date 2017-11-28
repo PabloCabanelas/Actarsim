@@ -1096,14 +1096,23 @@ void ActarSimPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent) {
     //Double_t masa_45V = 923*45*MeV;
     //Double_t Eexc46Cr = 923*46*MeV;
     //Double_t energy45Vexcplusgamma = 923*45.1*MeV;
-    Double_t energyGamma = 1.322*MeV;
+    
+    Double_t energyGamma = 0.100*MeV;
+    //Double_t energyGamma = 0.500*MeV;
+    //Double_t energyGamma = 0.700*MeV;
+    //Double_t energyGamma = 1.322*MeV;
+    //energyGamma = energyGamma - 0.015*MeV + 0.03*G4UniformRand()*MeV;
+    energyGamma = G4RandGauss::shoot(energyGamma,energyGamma*0.015);
 
 //NOTA Supongo que la energía del gamma se saca directamente de la energy45Vexcplusgamma - la energia del estado fundamental 
 //del 45V, así que si es ese el caso, puedes poner una variable mas energy45Vground y una ecuación:
 // energyGamma = energy45Vexcplusgamma - energy45Vground;
 
     //Double_t energy_proton = (Eexc46Cr - energy45Vexcplusgamma - Ene_ProtonSeparation_46Cr) / (1+ masa_proton/masa_45V);
-    Double_t energy_proton = 0.8*MeV;
+    Double_t energy_proton = 0.9947*MeV;
+    //Double_t energy_proton = 0.6035*MeV;
+    //Double_t energy_proton = 0.4078*MeV;
+    //Double_t energy_proton = 1.224*MeV;
     //G4cout << "CHECK: energy of the proton: " << energy_proton/MeV << " MeV"<< G4endl;
 
     G4String particleName;
